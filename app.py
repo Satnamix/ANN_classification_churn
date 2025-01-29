@@ -6,29 +6,45 @@ import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
 
 
-model= tf.keras.models.load_model('model.h5')
+model= tf.keras.models.load_model('annclassification_practice/model.h5')
 
-with open('label_encoder_gender.pkl','rb') as f:
+with open('annclassification_practice/label_encoder_gender.pkl','rb') as f:
     label_encoder_gender=pickle.load(f)
     
-with open('onehot_encoder_geo.pkl','rb') as f:
+with open('annclassification_practice/onehot_encoder_geo.pkl','rb') as f:
     onehot_encoder_geo=pickle.load(f)
 
-with open('scaler.pkl','rb') as f:
+with open('annclassification_practice/scaler.pkl','rb') as f:
     scaler=pickle.load(f)
 
 st.title("Customer Churn Prediction")
 
-credit_score= st.number_input('Credit Score')
+
+def valid_int(input):
+    if input.isdigit():
+        input = int(input)
+    else:
+        st.error('Please enter a valid input.', icon="🚨")
+    return input
+
+
+#creditscore balance salary 
+credit_score = valid_int(st.text_input("Enter Credit Score"))
+balance=valid_int(st.text_input("Enter Balance"))
+estimated_salary=valid_int(st.text_input("Enter Estimated Salary"))
+
+
+
+# credit_score= st.number_input('Credit Score')
 geography= st.selectbox('Geography',onehot_encoder_geo.categories_[0])
 gender= st.selectbox('Gender',label_encoder_gender.classes_)
 age= st.slider('Age',18,92)
 tenure= st.slider('Tenure',0,10)
-balance= st.number_input('Balance')
+# balance= st.number_input('Balance')
 num_of_products= st.slider('Number of Products',1,4)
 has_cr_card= st.selectbox('Has Credit Card',[0,1])
 is_active_member= st.selectbox('Is Active Member',[0,1])
-estimated_salary= st.number_input('Estimated Salary')
+# estimated_salary= st.number_input('Estimated Salary')
 
 input_data = {
     'CreditScore': credit_score,

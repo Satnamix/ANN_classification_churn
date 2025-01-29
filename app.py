@@ -29,9 +29,9 @@ def valid_int(input):
 
 
 #creditscore balance salary 
-credit_score = valid_int(st.text_input("Enter Credit Score"))
-balance=valid_int(st.text_input("Enter Balance"))
-estimated_salary=valid_int(st.text_input("Enter Estimated Salary"))
+credit_score = valid_int(st.text_input("Enter Credit Score",value="0"))
+balance=valid_int(st.text_input("Enter Balance",value="0"))
+estimated_salary=valid_int(st.text_input("Enter Estimated Salary",value="0"))
 
 
 

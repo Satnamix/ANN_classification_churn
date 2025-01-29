@@ -54,7 +54,7 @@ input_df=pd.concat([input_df.drop(['Geography'],axis=1),encode_geo_df],axis=1)
 
 input_scaled=scaler.transform(input_df)
 
-st.write(f'Churn Probability  : {model.predict(input_scaled)[0][0]*100:.2f} %')
+st.write(f'Churn Probability  : {model.predict(input_scaled)[0][0]:.2f}')
 
 if model.predict(input_scaled)[0][0]>0.5:   
     st.write("Custumor is unlikely to churn")

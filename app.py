@@ -6,15 +6,15 @@ import tensorflow as tf
 from sklearn.preprocessing import StandardScaler, OneHotEncoder, LabelEncoder
 
 
-model= tf.keras.models.load_model('annclassification_practice/model.h5')
+model= tf.keras.models.load_model('model.h5')
 
-with open('annclassification_practice/label_encoder_gender.pkl','rb') as f:
+with open('label_encoder_gender.pkl','rb') as f:
     label_encoder_gender=pickle.load(f)
     
-with open('annclassification_practice/onehot_encoder_geo.pkl','rb') as f:
+with open('onehot_encoder_geo.pkl','rb') as f:
     onehot_encoder_geo=pickle.load(f)
 
-with open('annclassification_practice/scaler.pkl','rb') as f:
+with open('scaler.pkl','rb') as f:
     scaler=pickle.load(f)
 
 st.title("Customer Churn Prediction")
